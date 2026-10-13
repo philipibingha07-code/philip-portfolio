@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Philip Ibingha — Data Scientist specializing in machine learning, business analytics, and data engineering.">
+  <title>Philip Ibingha | Data Science Portfolio</title>
+
+  <style>
+    :root {
+      --blue: #245cff;
+      --navy: #17233b;
+      --text: #283449;
+      --muted: #657187;
+      --background: #f6f8fc;
+      --border: #e3e8f0;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      padding: 20px 5%;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .brand span {
+      color: var(--blue);
+    }
+
+    .topbar nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 22px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .topbar nav a:hover,
+    .project-link:hover {
+      color: var(--blue);
+    }
+
+    .layout {
+      max-width: 1440px;
+      margin: 36px auto;
+      padding: 0 28px;
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
+    }
+
+    .profile {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      position: sticky;
+      top: 24px;
+      box-shadow: 0 8px 30px rgba(23, 35, 59, 0.04);
+    }
+
+    .avatar {
+      width: 118px;
+      height: 118px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #edf1ff;
+      display: block;
+      margin-bottom: 22px;
+    }
+
+    .profile h1 {
+      font-size: 28px;
+      line-height: 1.2;
+      margin: 0 0 10px;
+      color: var(--navy);
+    }
+
+    .headline {
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .location {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 22px 0 30px;
+    }
+
+    .socials a {
+      background: #eef2ff;
+      color: #2448b9;
+      padding: 7px 11px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--muted);
+      margin: 25px 0 10px;
+    }
+
+    .profile p {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .skill {
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #f0f3fa;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .contact-button {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      background: var(--blue);
+      color: white;
+      border-radius: 10px;
+      padding: 12px;
+      font-weight: 700;
+    }
+
+    .content {
+      min-width: 0;
+    }
+
+    .welcome {
+      background: linear-gradient(120deg, #1c3974, #3867dc);
+      color: white;
+      padding: 38px;
+      border-radius: 22px;
+      margin-bottom: 32px;
+    }
+
+    .welcome .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 11px;
+      font-weight: 800;
+      opacity: 0.8;
+    }
+
+    .welcome h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      line-height: 1.15;
+      margin: 10px 0;
+    }
+
+    .welcome p {
+      max-width: 650px;
+      color: #e7edff;
+      margin-bottom: 0;
+    }
+
+    .projects-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .projects-heading h2 {
+      font-size: 25px;
+      margin: 0;
+      color: var(--navy);
+    }
+
+    .projects-heading span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 35px rgba(23, 35, 59, 0.09);
+    }
+
+    .project-banner {
+      min-height: 150px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #e4ecff, #d6f2f1);
+    }
+
+    .project-banner .emoji {
+      font-size: 42px;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .project-banner strong {
+      color: var(--navy);
+      font-size: 18px;
+      display: block;
+    }
+
+    .project-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .project-body h3 {
+      color: var(--navy);
+      font-size: 19px;
+      line-height: 1.35;
+      margin: 0 0 12px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .tag {
+      background: #eef2ff;
+      color: #294ec4;
+      padding: 4px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .project-body p {
+      font-size: 14px;
+      color: var(--muted);
+      margin: 0 0 18px;
+    }
+
+    .project-link {
+      margin-top: auto;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .contact-section {
+      margin-top: 32px;
+      padding: 28px;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+    }
+
+    .contact-section h2 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 15px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 950px) {
+      .layout {
+        grid-template-columns: 270px minmax(0, 1fr);
+        gap: 20px;
+        padding: 0 18px;
+      }
+
+      .profile {
+        padding: 22px;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+      }
+
+      .topbar nav {
+        gap: 14px;
+      }
+
+      .layout {
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+        padding: 0 14px;
+      }
+
+      .profile {
+        position: static;
+      }
+
+      .welcome {
+        padding: 26px;
+      }
+
+      .projects-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">Philip<span>Portfolio</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/philipibingha07-code"
+         target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </nav>
+  </header>
+
+  <main class="layout">
+    <aside class="profile">
+      <img
+        class="avatar"
+        src="https://github.com/philipibingha07-code.png"
+        alt="Philip Ibingha's GitHub profile picture"
+      >
+
+      <h1>Philip Ibingha</h1>
+      <div class="headline">Data Scientist | ML | Business Intelligence</div>
+      <div class="location">📍 Nigeria</div>
+
+      <div class="socials">
+        <a href="https://github.com/philipibingha07-code"
+           target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="https://www.linkedin.com/"
+           target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      </div>
+
+      <div class="section-label">ABOUT ME</div>
+      <p>
+        I turn complex data into actionable insights using data science,
+        machine learning and analytics. I enjoy solving business problems,
+        identifying trends and building data-driven solutions that support
+        better decisions.
+      </p>
+
+      <div class="section-label" id="skills">TECHNICAL SKILLS</div>
+      <div class="skill-list">
+        <span class="skill">Python</span>
+        <span class="skill">SQL</span>
+        <span class="skill">Pandas</span>
+        <span class="skill">Scikit-learn</span>
+        <span class="skill">Tableau</span>
+        <span class="skill">Power BI</span>
+        <span class="skill">BigQuery</span>
+        <span class="skill">Machine Learning</span>
+        <span class="skill">Data Analytics</span>
+      </div>
+
+      <a class="contact-button" href="#contact">Let's Connect →</a>
+    </aside>
+
+    <section class="content">
+      <div class="welcome">
+        <div class="eyebrow">Data Science & Analytics Portfolio</div>
+        <h2>Turning Data Into<br>Meaningful Insights.</h2>
+        <p>
+          Explore my projects in machine learning, fraud detection,
+          business intelligence, customer analytics and predictive modelling.
+        </p>
+      </div>
+
+      <section id="projects">
+        <div class="projects-heading">
+          <h2>Featured Projects</h2>
+          <span>Selected data projects</span>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card">
+            <div class="project-banner">
+              <div>
+                <span class="emoji">📈</span>
+                <strong>Revenue & Customer Insights</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>GrowthFlow SaaS Analytics</h3>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Segmentation</span>
+              </div>
+              <p>
+                Explores SaaS revenue, customer segmentation, retention
+                and growth opportunities to support business decisions.
+              </p>
+              <a class="project-link"
+                 href="https://github.com/philipibingha07-code/growthflow"
+                 target="_blank" rel="noopener noreferrer">View project →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-banner">
+              <div>
+                <span class="emoji">🛡️</span>
+                <strong>Financial Risk Analytics</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>NovaPay Fraud Detection</h3>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Fintech</span>
+              </div>
+              <p>
+                Investigates transaction data and classification techniques
+                for identifying potentially fraudulent financial activity.
+              </p>
+              <a class="project-link"
+                 href="https://github.com/philipibingha07-code/NovaPay-Fraud-Detection-System"
+                 target="_blank" rel="noopener noreferrer">View project →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-banner">
+              <div>
+                <span class="emoji">🏨</span>
+                <strong>Booking Performance</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>HotelHaven Booking Intelligence</h3>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Analytics</span>
+                <span class="tag">Prediction</span>
+              </div>
+              <p>
+                Analyzes hotel booking patterns, cancellation behaviour
+                and lead times to identify revenue management opportunities.
+              </p>
+              <a class="project-link"
+                 href="https://github.com/philipibingha07-code/hotelhaven-booking-intelligence"
+                 target="_blank" rel="noopener noreferrer">View project →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-banner">
+              <div>
+                <span class="emoji">🚌</span>
+                <strong>Transport Data Insights</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>MetroMove Transit Analytics</h3>
+              <div class="tags">
+                <span class="tag">Data Analytics</span>
+                <span class="tag">Visualization</span>
+              </div>
+              <p>
+                Examines public transport usage and compares performance
+                across transport modes to uncover operational trends.
+              </p>
+              <a class="project-link"
+                 href="https://github.com/philipibingha07-code/metromove-transit-analytics"
+                 target="_blank" rel="noopener noreferrer">View project →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-banner">
+              <div>
+                <span class="emoji">🤖</span>
+                <strong>Hiring Data Classification</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>AI Hiring Classifier</h3>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Classification</span>
+                <span class="tag">AI</span>
+              </div>
+              <p>
+                Explores classification techniques to support structured
+                analysis of hiring-related data.
+              </p>
+              <a class="project-link"
+                 href="https://github.com/philipibingha07-code?tab=repositories"
+                 target="_blank" rel="noopener noreferrer">Explore repositories →</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-banner">
+              <div>
+                <span class="emoji">🌾</span>
+                <strong>Agricultural Intelligence</strong>
+              </div>
+            </div>
+            <div class="project-body">
+              <h3>Agricultural Data & Price Forecasting</h3>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Forecasting</span>
+              </div>
+              <p>
+                Explores agricultural market data, price trends and
+                forecasting methods for data-driven market insights.
+              </p>
+              <a class="project-link"
+                 href="https://github.com/philipibingha07-code?tab=repositories"
+                 target="_blank" rel="noopener noreferrer">Explore repositories →</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <h2>Let's Connect</h2>
+        <p>
+          Interested in data science, analytics or machine learning?
+          Explore my work and connect with me professionally.
+        </p>
+        <a class="project-link"
+           href="https://github.com/philipibingha07-code"
+           target="_blank" rel="noopener noreferrer">Visit my GitHub profile →</a>
+      </section>
+    </section>
+  </main>
+
+  <footer>
+    © <span id="year">2026</span> Philip Ibingha · Data Science Portfolio
+  </footer>
+</body>
+</html>
